@@ -5,7 +5,7 @@ def try_load_gifts
 	filename = ARGV.first # first argument passed from the command line
 	return if filename.nil? # exits out of method if no argument passed
 	if File.exists?(filename)
-		load_students(filename)
+		load_gifts(filename)
 		puts "Loaded #{@xmasgifts.length} records from #{filename}"
 	else
 		puts "Sorry #{filename} doesn't exist."
@@ -45,8 +45,7 @@ def input_gifts
 	capture_gift
 	while !@gift.empty? do
 		add_gifts(@gift, capture_receiver, capture_giver)
-		print "You have entered #{@xmasgifts.length} gift"
-		puts @xmasgifts.length != 1 ? "s" : ""
+		print "You have entered #{@xmasgifts.length} gift#{@xmasgifts.length != 1 ? "s" : ""}, please add another or return to get back to menu"
 		capture_gift
 	end
 	@xmasgifts
